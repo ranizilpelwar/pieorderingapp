@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { CheckForOutstandingCharges } from "./CheckForOutstandingCharges";
+import { OrderPie } from "./OrderPie";
+import { SimplePieForm } from "./SimplePieForm";
 import './App.css';
+
+async function postPie(orderDetails) {
+  await fetch("https://www.thebestpies.com/orderpie", {
+    method: "POST",
+    body: JSON.stringify(orderDetails)
+  });
+}
+const goToOrderSummary = () =>  window.location.href = "https://www.thebestpies.com/ordersummary";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CheckForOutstandingCharges>
+      <OrderPie
+        ConfirmationForm={SimplePieForm}
+        redirectToSummary={goToOrderSummary}
+        orderPieAction={postPie}
+      />
+    </CheckForOutstandingCharges>
   );
 }
 
