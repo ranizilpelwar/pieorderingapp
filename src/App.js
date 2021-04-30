@@ -1,14 +1,10 @@
 import { CheckForOutstandingCharges } from "./CheckForOutstandingCharges";
 import { OrderPie } from "./OrderPie";
 import { SimplePieForm } from "./SimplePieForm";
+import { postPie } from "./actions/postPie";
 import './App.css';
 
-async function postPie(orderDetails) {
-  await fetch("https://www.thebestpies.com/orderpie", {
-    method: "POST",
-    body: JSON.stringify(orderDetails)
-  });
-}
+
 const goToOrderSummary = () =>  window.location.href = "https://www.thebestpies.com/ordersummary";
 
 function App() {

@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import { pieOrderSchema } from "./pieOrderSchema";
+import { pieOrderSchema } from "./validations/pieOrderSchema";
 
 export const SimplePieForm = ({ usersFirstName, onSubmit }) => {
   return (
