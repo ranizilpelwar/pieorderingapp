@@ -6,7 +6,8 @@ import './App.css';
 
 
 const goToOrderSummary = () =>  window.location.href = "https://www.thebestpies.com/ordersummary";
-const paymentHistory = { pastDueBills: [{ billId: 1, amount: 100 }] };
+const paymentHistory = { pastDueBills: [] };
+const userDetails = { firstName: "Rani" };
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       paymentHistory={paymentHistory}
     >
       <OrderPie
-        ConfirmationForm={SimplePieForm}
+        OrderDetailsForm={SimplePieForm}
         redirectToSummary={goToOrderSummary}
         orderPieAction={postPie}
+        userDetails={userDetails}
       />
     </CheckForOutstandingCharges>
   );
