@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import { pieOrderSchema } from "./validations/pieOrderSchema";
+import { pieOrderSchema } from "./pieOrderSchema";
 
 export const SimplePieForm = ({ usersFirstName, onSubmit }) => {
   return (
@@ -9,7 +9,7 @@ export const SimplePieForm = ({ usersFirstName, onSubmit }) => {
         <Field type="select" name="pieTypes" />
         <Field type="input" name="quantity" />
         <Field type="input" name="customizations" />
-        <button type="submit">Submit Order</button>
+        <button type="submit">Submit</button>
       </Form>
     </Formik>
   );

@@ -1,7 +1,7 @@
 export const OrderPie = ({
   OrderDetailsForm,
-  redirectToSummary,
-  orderPieAction
+  redirectToSummary = () => {},
+  orderPieAction = () => {}
 }) => {
   const userData = { firstName: "John" };
   const onSubmit = (formData) => {
