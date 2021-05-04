@@ -8,26 +8,28 @@ const initialValues = {
 };
 
 export const SimplePieForm = ({ usersFirstName, onSubmit }) => {
+  const submitForm = (values) => onSubmit(values);
+
   return (
     <Formik
-      onSubmit={onSubmit}
+      onSubmit={submitForm}
       validationSchema={pieOrderSchema}
       initialValues={initialValues}
     >
       <Form>
         <p>{`${usersFirstName}, what would you like to order?`}</p>
-        <label htmlFor="pieType">What kind of pie?</label>
-        <Field as="select" name="pieType">
+        <label id="type">What kind of pie?</label>
+        <Field as="select" name="pieType" aria-labelledby="type">
           <option value="apple">Apple</option>
           <option value="pumpkin">Pumpkin</option>
         </Field>
         <br />
-        <label htmlFor="quantity">How many pies?</label>
-        <Field type="input" name="quantity" />
+        <label id="count">How many pies?</label>
+        <Field type="input" name="quantity" aria-labelledby="count" />
         <ErrorMessage name="quantity"></ErrorMessage>
         <br />
-        <label htmlFor="customizations">Any customizations?</label>
-        <Field type="input" name="customizations" />
+        <label id="custom">Any customizations?</label>
+        <Field type="input" name="customizations" aria-labelledby="custom" />
         <br />
         <button type="submit">Submit</button>
       </Form>

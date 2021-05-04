@@ -1,15 +1,21 @@
+import { useState } from "react";
+
 export const OrderPie = ({
   OrderDetailsForm,
-  redirectToSummary = () => {},
-  orderPieAction = () => {},
+  OrderSummaryPage,
+  orderPieAction,
   userDetails
 }) => {
+  const [orderDetails, setOrderDetails] = useState(undefined);
+
   const onSubmit = (formData) => {
     orderPieAction(formData);
-    redirectToSummary();
+    setOrderDetails(formData);
   };
 
-  return (
+  return orderDetails ? (
+    <OrderSummaryPage orderDetails={orderDetails} />
+  ) : (
     <OrderDetailsForm
       usersFirstName={userDetails.firstName}
       onSubmit={onSubmit}
