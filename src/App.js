@@ -7,7 +7,6 @@ import './App.css';
 
 
 const paymentHistory = { pastDueBills: [] };
-const userDetails = { firstName: "Rani" };
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         OrderDetailsForm={SimplePieForm}
         OrderSummaryPage={OrderSummaryPage}
         orderPieAction={postPie}
-        userDetails={userDetails}
       />
     </CheckForOutstandingCharges>
   );

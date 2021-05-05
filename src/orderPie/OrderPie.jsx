@@ -3,8 +3,7 @@ import { useState } from "react";
 export const OrderPie = ({
   OrderDetailsForm,
   OrderSummaryPage,
-  orderPieAction,
-  userDetails
+  orderPieAction
 }) => {
   const [orderDetails, setOrderDetails] = useState(undefined);
 
@@ -16,9 +15,6 @@ export const OrderPie = ({
   return orderDetails ? (
     <OrderSummaryPage orderDetails={orderDetails} />
   ) : (
-    <OrderDetailsForm
-      usersFirstName={userDetails.firstName}
-      onSubmit={onSubmit}
-    />
+    <OrderDetailsForm onSubmit={onSubmit} />
   );
 };

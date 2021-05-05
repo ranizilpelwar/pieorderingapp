@@ -7,7 +7,7 @@ const initialValues = {
   customizations: ""
 };
 
-export const SimplePieForm = ({ usersFirstName, onSubmit }) => {
+export const SimplePieForm = ({ onSubmit }) => {
   const submitForm = (values) => onSubmit(values);
 
   return (
@@ -17,7 +17,7 @@ export const SimplePieForm = ({ usersFirstName, onSubmit }) => {
       initialValues={initialValues}
     >
       <Form>
-        <p>{`${usersFirstName}, what would you like to order?`}</p>
+        <p>What would you like to order?</p>
         <label id="type">What kind of pie?</label>
         <Field as="select" name="pieType" aria-labelledby="type">
           <option value="apple">Apple</option>
