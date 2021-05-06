@@ -1,5 +1,5 @@
 import { SimplePieForm } from "./SimplePieForm";
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, act } from '@testing-library/react';
 import { jest } from "@jest/globals";
 
 test("show users first name on form", () => {
@@ -13,35 +13,44 @@ test("show users first name on form", () => {
   expect(getByText("John", { exact: false }) ).toBeInTheDocument();
 });
 
-test("should submit form when all required fields are filled", async () => {
+test("should call onSubmit when the form is submitted", async () => {
   const spy = jest.fn();
-  const { getByLabelText, getByText } = render(
-    <SimplePieForm
-      usersFirstName="John"
-      onSubmit={spy}
-    />
-  );
-  const input = getByLabelText("How many pies?");
-  fireEvent.change(input, { target: { value: "3" } });
-  fireEvent.submit(getByText("Submit"));
+  let container;
+  let input;
+  act(() => {
+    container = render(
+      <SimplePieForm
+        onSubmit={spy}
+      />
+    );
+    input = container.getByLabelText("How many pies?");
+    fireEvent.change(input, { target: { value: "3" } });
+  });
 
+  await waitFor(() => {
+    expect(input.value).toBe('3');
+  });
+  
+  act(() => {
+    fireEvent.submit(container.getByText("Submit"));
+  });
+  
   await waitFor(() => {
     expect(spy).toHaveBeenCalled();
   });
 });
 
-test("should not submit when there are validation errors", async () => {
+test("should show error message when required field is missing", async () => {
   const spy = jest.fn();
-  const { getByText } = render(
+  let container;
+  act(() => {
+    container = render(
       <SimplePieForm
-        usersFirstName="John"
         onSubmit={spy}
       />
     );
-
-  fireEvent.submit(getByText("Submit"));
-
-  await waitFor(() => {
-    expect(spy).not.toHaveBeenCalled();
-  })
+    fireEvent.submit(container.getByText("Submit"));
+  });
+  
+  expect(await container.findByText(/required/i)).not.toBeNull();
 });
