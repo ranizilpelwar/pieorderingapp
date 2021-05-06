@@ -35,19 +35,19 @@ describe("SimplePieForm", () => {
     });
   });
 
-it("should show error message when required field is missing", async () => {
-  const spy = jest.fn();
-  let container;
-  act(() => {
-    container = render(
-      <SimplePieForm
-        onSubmit={spy}
-      />
-    );
-    fireEvent.submit(container.getByText("Submit"));
+  it("should show error message when required field is missing", async () => {
+    const spy = jest.fn();
+    let container;
+    act(() => {
+      container = render(
+        <SimplePieForm
+          onSubmit={spy}
+        />
+      );
+      fireEvent.submit(container.getByText("Submit"));
+    });
+  
+    expect(await container.findByText(/required/i)).not.toBeNull();
   });
- 
-  expect(await container.findByText(/required/i)).not.toBeNull();
-});
 
 });
