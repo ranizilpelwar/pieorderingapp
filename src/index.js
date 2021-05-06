@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const paymentHistory = { pastDueBills: [{ billId: 1, amount: 100 }] };
-  
+const paymentHistory = { pastDueBills: [] };
+
 ReactDOM.render(
   <React.StrictMode>
     <App 
