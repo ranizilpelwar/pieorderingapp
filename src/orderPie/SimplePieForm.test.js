@@ -49,5 +49,4 @@ describe("SimplePieForm", () => {
   
     expect(await container.findByText(/required/i)).not.toBeNull();
   });
-
 });
