@@ -1,3 +1,8 @@
+## Purpose
+
+This app was built to showcase the use of basic design principles to have components that are simple to test, simple to build and simple to refactor.
+The two design principles that are leveraged here are Dependency Injection and Composition.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
